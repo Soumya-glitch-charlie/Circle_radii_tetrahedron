@@ -1,30 +1,9 @@
 # bug-free-octo-winner
-import math
+Problem
+Given the lengths of the edges of a tetrahedron calculate the radius of a sphere inscribed in that tetrahedron (i.e. a sphere tangent to all the faces).
 
-def aire_heron(a_, b_, c_):
-    s = (a_ + b_ + c_)/2
-    return math.sqrt(s*(s-a_)*(s-b_)*(s-c_))
-def tetrahedron_radius(WX, WY, WZ, XY, XZ, YZ):
-    a = WX**2
-    b = WY**2
-    c = WZ**2
-    d = XY**2
-    e = XZ**2
-    f = YZ**2
-    
-    D = a + b - d
-    E = b + c - f
-    F = a + c - e
-    
-    P = 4*a*b*c
-    Q = (a*(E**2)) + (b*(F**2)) + (c*(D**2))
-    R = D*E*F
-    
-    A = aire_heron(WX,WY,XY) + aire_heron(WX,WZ,XZ) + aire_heron(WY,WZ,YZ) + aire_heron(XY,XZ,YZ)
-    
-    volume = (math.sqrt(P - Q + R))/12
-    return (3*volume)/A
-t = int(input().strip())
-for i in range(t):
-    WX, WY, WZ, XY, XZ, YZ = [int(x) for x in input().split()]
-    print("%.4f" % tetrahedron_radius(WX, WY, WZ, XY, XZ, YZ))
+Input
+An integer t, 1<=t<=30, denoting the number of test cases, followed by t lines, each containing 6 integers describing the lengths of the edges of a tetrahedron separated by single spaces. The edges are not longer than 1000 and for the tetrahedron WXYZ, the order of the edges is: WX, WY, WZ, XY, XZ, YZ.
+
+Output
+t lines, each consisting of a real number given with four digits decimal precision equal to the radius of a sphere inscribed in the given tetrahedron.
